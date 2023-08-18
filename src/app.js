@@ -17,8 +17,8 @@ const { addLogger, logger } = require('./utils/logger.js');
 const { chatRouter, connectSocket } = require('./routes/chat.router.js');
 const passport = require('passport')
 const startPassport = require('./config/passport.config.js');
-const { MONGO_URL, PORT, ADMIN_EMAIL, ADMIN_PASSWORD, MODE, ADMIN_STATUS } = require('./config/env.config.js');
-logger.info(MODE)
+const { MODE, MONGO_URL, PORT, ADMIN_EMAIL, ADMIN_PASSWORD, MODE_DESCRIPTION, ADMIN_STATUS } = require('./config/env.config.js');
+logger.info(MODE_DESCRIPTION)
 
 
 //--------login----------
@@ -73,11 +73,11 @@ app.use('/mail', mailRouter)
 app.use('/sms', smsRouter)
 app.use('/chat', chatRouter)
 app.use('/mockingproducts', mockingRouter)
-app.use('/error', errorRouter)
+app.use('/loggerTest', errorRouter)
 app.use(errorHandler)
 
 const httpServer = app.listen(PORT, () => {
-  console.log(`Example app listening on port http://localhost:${PORT}`)
+  logger.info(`Example app listening on port http://localhost:${PORT}`)
 });
 
 connectSocket(httpServer)

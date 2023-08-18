@@ -17,6 +17,7 @@ module.exports = {
     ADMIN_STATUS: process.env.ADMIN_STATUS,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+    MODE_DESCRIPTION: process.env.MODE_DESCRIPTION,
     MODE: process.env.MODE,
     GITHUB_ID: process.env.GITHUB_ID,
     GOOGLE_ID: process.env.GOOGLE_ID,
