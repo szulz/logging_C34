@@ -66,10 +66,8 @@ const prodLogger = winston.createLogger({
 const addLogger = (req, res, next) => {
     if (MODE === 'development') {
         req.logger = devLogger
-        console.log('soy dev');
     } else {
         req.logger = prodLogger
-        console.log('soy prod ');
     }
     next()
 }

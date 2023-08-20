@@ -2,10 +2,6 @@ const express = require('express')
 const errorRouter = express.Router();
 
 errorRouter.get('/', async (req, res) => {
-    req.logger.log({
-        level: 'warn',
-        message: 'warn especial',
-    })
     req.logger.error('this is a error logger')
     req.logger.warn('this is a warn logger')
     req.logger.info('this is a info logger')
