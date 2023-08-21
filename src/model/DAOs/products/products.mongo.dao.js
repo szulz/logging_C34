@@ -54,17 +54,6 @@ class ProductDao {
         return
     }
 
-
-    /*
-    async decreaseStock(id) {
-        let productToCheck = await productModel.findById(id)
-        if (productToCheck.stock > 0) {
-            productToCheck.stock -= 1
-            productToCheck.save()
-            return productToCheck.stock
-        }
-    }
-    */
     async findById(id) {
         let productToCheck = await productModel.findById(id)
         return productToCheck

@@ -9,7 +9,6 @@ const ProductManagerMongoose = require('../services/product.service.js');
 class ProductController {
 
     async createOne(req, res) {
-        console.log(req.body);
         let newProd = await productDao.createProduct(req.body);
         return res.status(200).send({
             status: 'Product successfully added!',

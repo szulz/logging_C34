@@ -58,6 +58,7 @@ async function startPassport() {
             }
         )
     )
+/*
     passport.use(
         'google',
         new GoogleStrategy(
@@ -139,7 +140,7 @@ async function startPassport() {
             }
         )
     )
-
+*/
     passport.use(
         'login',
         new LocalStrategy({ usernameField: 'email' }, async (username, password, done) => {
