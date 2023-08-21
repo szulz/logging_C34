@@ -35,6 +35,18 @@ module.exports = (error, req, res, next) => {
                 .send({ status: 'error', error: error.name, cause: error.cause })
             break;
 
+        case EErrors.NOT_ADMIN:
+            res
+                .status(400)
+                .send({ status: 'error', error: error.name, cause: error.cause })
+            break;
+
+        case EErrors.BLOCK_CHAT:
+            res
+                .status(400)
+                .send({ status: 'error', error: error.name, cause: error.cause })
+            break;
+
         default:
             res.send({ status: 'error', error: 'unhandled error' })
             break;

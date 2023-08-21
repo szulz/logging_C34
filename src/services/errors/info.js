@@ -27,6 +27,13 @@ class GenerateErrorCauses {
         return 'unexpected error'
     }
 
+    notAdmin(){
+        return 'You have no permission to perform this action, you must have the admin role'
+    }
+
+    blockAdminChat(){
+        return 'Admins cant use the chat room'
+    }
 
 }
 

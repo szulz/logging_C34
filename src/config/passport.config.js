@@ -44,103 +44,102 @@ async function startPassport() {
                         let cartId = cart._id.toString()
                         newUser.cart = cartId
                         let userCreated = await userModel.create(newUser);
-                        console.log('user registered');
+                        req.logger.info(userCreated)
                         return done(null, userCreated);
                     } else {
-                        console.log('user already exist');
+                        req.logger.info('user already exist');
                         return done(null, user);
                     }
                 } catch (e) {
-                    console.log('error en github');
-                    console.log(e);
+                    req.logger.error('error en github');
                     return done(e)
                 }
             }
         )
     )
-/*
-    passport.use(
-        'google',
-        new GoogleStrategy(
-            {
-                clientID: GOOGLE_ID,
-                clientSecret: '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',
-                callbackURL: `http://localhost:${PORT}/api/sessions/googlecallback`,
-                scope: ['https://www.googleapis.com/auth/userinfo.profile', 'email', 'name', 'displayName'],
-                passReqToCallback: true,
-
-            },
-            async (req, accessToken, refreshToken, profile, done) => {
-                try {
-                    console.log(profile);
-                    let user = await userModel.findOne({ email: profile.email });
-                    if (!user) {
-                        const newUser = {
-                            email: profile.email,
-                            first_name: profile.given_name || 'unspecified',
-                            last_name: profile.family_name || 'unspecified',
-                            password: 'unspecified',
-                            age: 0
-                        };
-                        let cart = await cartManagerMongoose.createCart();
-                        let cartId = cart._id.toString()
-                        newUser.cart = cartId
-                        let userCreated = await userModel.create(newUser);
-                        console.log('user registered');
-                        return done(null, userCreated);
-                    } else {
-                        console.log('user already exist');
-                        return done(null, user);
+    /*
+        passport.use(
+            'google',
+            new GoogleStrategy(
+                {
+                    clientID: GOOGLE_ID,
+                    clientSecret: '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',
+                    callbackURL: `http://localhost:${PORT}/api/sessions/googlecallback`,
+                    scope: ['https://www.googleapis.com/auth/userinfo.profile', 'email', 'name', 'displayName'],
+                    passReqToCallback: true,
+    
+                },
+                async (req, accessToken, refreshToken, profile, done) => {
+                    try {
+                        console.log(profile);
+                        let user = await userModel.findOne({ email: profile.email });
+                        if (!user) {
+                            const newUser = {
+                                email: profile.email,
+                                first_name: profile.given_name || 'unspecified',
+                                last_name: profile.family_name || 'unspecified',
+                                password: 'unspecified',
+                                age: 0
+                            };
+                            let cart = await cartManagerMongoose.createCart();
+                            let cartId = cart._id.toString()
+                            newUser.cart = cartId
+                            let userCreated = await userModel.create(newUser);
+                            console.log('user registered');
+                            return done(null, userCreated);
+                        } else {
+                            console.log('user already exist');
+                            return done(null, user);
+                        }
+                    } catch (e) {
+                        console.log('error en google');
+                        console.log(e);
+                        return done(e)
                     }
-                } catch (e) {
-                    console.log('error en google');
-                    console.log(e);
-                    return done(e)
                 }
-            }
+            )
         )
-    )
-
-    passport.use(
-        'facebook',
-        new FacebookStrategy(
-            {
-                clientID: FACEBOOK_ID,
-                clientSecret: 'fede9849c4b17736f98a021e7dd8c51d',
-                callbackURL: `http://localhost:${PORT}/api/sessions/facebookcallback`,
-                profileFields: ['id', 'emails', 'name']
-            },
-            async (accessTocken, _, profile, done) => {
-                try {
-                    console.log(profile._json.first_name);
-                    let user = await userModel.findOne({ email: profile._json.email });
-                    if (!user) {
-                        const newUser = {
-                            email: profile._json.email,
-                            first_name: profile._json.first_name || 'unspecified',
-                            last_name: profile._json.last_name || 'unspecified',
-                            password: 'unspecified',
-                            age: 0
-                        };
-                        let cart = await cartManagerMongoose.createCart();
-                        let cartId = cart._id.toString()
-                        newUser.cart = cartId
-                        let userCreated = await userModel.create(newUser);
-                        console.log('user registered');
-                        return done(null, userCreated);
-                    } else {
-                        console.log('user already exist');
-                        return done(null, user);
+    
+        passport.use(
+            'facebook',
+            new FacebookStrategy(
+                {
+                    clientID: FACEBOOK_ID,
+                    clientSecret: 'fede9849c4b17736f98a021e7dd8c51d',
+                    callbackURL: `http://localhost:${PORT}/api/sessions/facebookcallback`,
+                    profileFields: ['id', 'emails', 'name']
+                },
+                async (accessTocken, _, profile, done) => {
+                    try {
+                        console.log(profile._json.first_name);
+                        let user = await userModel.findOne({ email: profile._json.email });
+                        if (!user) {
+                            const newUser = {
+                                email: profile._json.email,
+                                first_name: profile._json.first_name || 'unspecified',
+                                last_name: profile._json.last_name || 'unspecified',
+                                password: 'unspecified',
+                                age: 0
+                            };
+                            let cart = await cartManagerMongoose.createCart();
+                            let cartId = cart._id.toString()
+                            newUser.cart = cartId
+                            let userCreated = await userModel.create(newUser);
+                            console.log('user registered');
+                            return done(null, userCreated);
+                        } else {
+                            console.log('user already exist');
+                            return done(null, user);
+                        }
+                    } catch (e) {
+                        console.log('error en facebook');
+                        console.log(e);
+                        return done(e)
                     }
-                } catch (e) {
-                    console.log('error en facebook');
-                    console.log(e);
-                    return done(e)
                 }
-            }
+            )
         )
-    )
-*/
+    */
     passport.use(
         'login',
         new LocalStrategy({ usernameField: 'email' }, async (username, password, done) => {
@@ -165,7 +164,7 @@ async function startPassport() {
                 if (ADMIN_STATUS == 'true') {
                     if (ADMIN_EMAIL == user.email) {
                         await userModel.findByIdAndUpdate(user._id, { role: 'admin' }, { new: true })
-                        console.log('se actualizo el status a admin');
+                        req.logger.info('se actualizo el status a admin');
                     }
                 } else {
                     user.role = 'user'
@@ -197,6 +196,7 @@ async function startPassport() {
                     }
                     let existingUser = await userModel.findOne({ email: username })
                     if (existingUser) {
+                        req.logger.info('user already exists')
                         CustomError.createError({
                             name: 'Email already Registered',
                             message: 'Please try again with another email',
@@ -214,6 +214,7 @@ async function startPassport() {
                             await userModel.findByIdAndUpdate(userCreated._id, { role: 'admin' }, { new: true })
                         }
                     }
+                    req.logger.info(userCreated)
                     return done(null, userCreated)
                 } catch (err) {
                     console.log(err);

@@ -39,7 +39,7 @@ class MailController {
             //},
             //],
         });
-        console.log(result);
+        req.logger.info(result);
         res.render('mailSent', {})
     }
 }

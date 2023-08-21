@@ -10,7 +10,7 @@ class SmsController {
             from: TWILIO_PHONE,
             to: '+541150968007'
         })
-        console.log(result);
+        req.logger.info(result);
         setTimeout(() => {
             res.redirect('/products'); // Redirect after 5 seconds
         }, 5000);

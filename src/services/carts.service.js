@@ -16,7 +16,6 @@ class CartService {
     async userCart(id) {
         let cartCountent = await cartsDao.findById(id)
         if (cartCountent.cart == '') {
-            console.log('empty cart');
             let products = { empty: 'You have not added anything to the cart yet!' }
             return products
         }
@@ -33,6 +32,7 @@ class CartService {
             let response = await productDao.decreaseStock(productId, foundProduct, foundCart)
             return response
         } catch (e) {
+            req.logger.error('something went wrong in addToCart')
             throw new Error('error en addtocart')
         }
     }
